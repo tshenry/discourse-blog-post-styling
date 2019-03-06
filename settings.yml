@@ -1,0 +1,5 @@
+blog_category:
+  type: string
+  default: ""
+  description: 
+    en: 'Enter the category slug of your blog category as it appears in the url. The slug is bold in the following example url: https://community.example.org/c/<b>blog-posts</b>'
