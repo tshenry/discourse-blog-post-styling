@@ -1,6 +1,6 @@
 {
   "name": "Blog Post Styling",
-  "about_url": "URL",
-  "license_url": "URL",
+  "about_url": "https://meta.discourse.org/t/blog-post-styling/110841",
+  "license_url": "https://github.com/tshenry/discourse-blog-post-styling/blob/master/LICENSE",
   "component": true
 }
