@@ -1,3 +1,5 @@
+@import "common/foundation/variables";
+
 .category-#{$blog_category} {
   #topic-title {
     display: flex;
@@ -81,7 +83,7 @@
         }
       }
       .contents {
-        border-top: 1px solid #e9e9e9;
+        border-top: 1px solid $primary-low;
         margin-left: -25px;
         padding: 15px;
       }
@@ -170,12 +172,12 @@
     float: left;
     padding-left: 6px;
     padding-top: 8px;
-    border-top: 1px solid #e9e9e9;
+    border-top: 1px solid $primary-low;
   }
 
   .topic-body,
   .topic-avatar {
-    background-color: #f6f6f6;
+    background-color: $primary-very-low;
   }
 
   .cooked {
@@ -193,12 +195,12 @@
     padding-top: 4px;
 
     .topic-avatar {
-      border-top: 1px solid #e9e9e9;
+      border-top: 1px solid $primary-low;
       padding-top: 4px;
     }
 
     .topic-body {
-      background-color: #fff;
+      background-color: $secondary;
       padding-top: 16px;
     }
 
@@ -223,13 +225,13 @@
     }
 
     blockquote {
-      background: #f9f9f9;
-      color: #777;
-      border-left: 10px solid #ccc;
+      background: $primary-very-low;
+      color: $primary-high;
+      border-left: 10px solid $primary-low-mid;
       padding: 0.5em 10px;
     }
     blockquote:before {
-      color: #ccc;
+      color: $primary-low-mid;
       content: open-quote;
       font-size: 4em;
       line-height: 0.1em;
