@@ -247,3 +247,16 @@
     display: none;
   }
 }
+
+// Play nice with DiscoTOC theme component
+@media screen and (min-width: $large-width) {
+  .category-#{$blog_category} .d-toc-regular {
+    #topic-title {
+      margin-left: 10px;
+      display: block;
+    }
+    .d-toc {
+      font-size: .8em;
+    }
+  }
+}
