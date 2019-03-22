@@ -33,7 +33,7 @@
         let imgLinkStart = cooked.indexOf('"lightbox" href="');
         if(imgLinkStart >= 0) {
           imgLinkStart += 17; // compensate for indexOf string
-          let imgLinkEnd = cooked.indexOf('" data-', imgLinkStart);
+          let imgLinkEnd = cooked.indexOf('"', imgLinkStart);
           let imgLink = cooked.substring(imgLinkStart, imgLinkEnd);
           return h("div.blog-image", {style: {"background-image": "url(" + imgLink + ")"}});
         }
