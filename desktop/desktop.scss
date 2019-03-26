@@ -1,6 +1,88 @@
 @import "common/foundation/variables";
 
-.category-#{$blog_category} {
+/// str-split function found at: https://github.com/sass-projects/stringy/blob/master/src/scss/_str-split.scss
+/// License: MIT
+
+/// String split
+///
+/// Splits a String into a list of substrings using `$separator`.
+/// If separator is omitted, the list returned contains one element consisting of the entire string.
+/// If separator is an empty string, str is converted to a list of all characters.
+/// Integer specifying a limit on the number of splits to be found.
+/// The split method still splits on every match of separator, but it truncates the returned list to at most limit elements.
+///
+/// @param {string}  $string
+/// @param {string}  $separator
+/// @param {$number} $limit
+///
+/// @return {list}
+///
+/// @author pascalduez https://gist.github.com/pascalduez/065e560c6314c7e9d7f8
+@function str-split($string, $separator: null, $limit: null) {
+  $string: unquote($string);
+
+  @if type-of($string) != "string" {
+    @error "`str-split` function expecting a string for $string; #{type-of($string)} given.";
+  }
+
+  $result: zip(());
+
+  @if not $separator {
+    @return ($string,);
+  }
+
+  @if $separator == "" {
+    @for $i from 1 through str-length($string) {
+      $result: append($result, str-slice($string, $i, $i));
+    }
+
+    @return $result;
+  }
+
+  $running: true;
+  $progress: $string;
+  $length: str-length($separator);
+
+  @while $running {
+    $index: str-index($progress, $separator);
+    @if $index {
+      $result: append($result, str-slice($progress, 1, ($index - 1)));
+      $progress: str-slice($progress, ($index + $length));
+    } @else {
+      $running: false;
+    }
+  }
+
+  $result: append($result, $progress);
+
+  @if $limit and $limit > 0 {
+    $limit: if($limit > length($result), length($result), $limit);
+    $return: ();
+    @for $i from 1 through $limit {
+      $return: append($return, nth($result, $i));
+    }
+
+    @return $return;
+  }
+
+  @return $result;
+}
+
+$values: $blog_category;
+$split-values: str-split($values, ",");
+@each $value in $split-values {
+  .category-#{$value} {
+    @extend %blog-post;
+  }
+}
+
+%blog-post {
+
+  .topic-timeline {
+    display: none;
+  }
+
+
   #topic-title {
     display: flex;
     justify-content: center;
@@ -246,17 +328,28 @@
   .timeline-container.timeline-docked {
     display: none;
   }
-}
 
-// Play nice with DiscoTOC theme component
-@media screen and (min-width: $large-width) {
-  .category-#{$blog_category} .d-toc-regular {
-    #topic-title {
-      margin-left: 10px;
-      display: block;
-    }
-    .d-toc {
-      font-size: .8em;
+  // Play nice with DiscoTOC theme component
+  @media screen and (min-width: $large-width) {
+    .d-toc-regular {
+      #topic-title {
+        margin-left: 10px;
+        display: block;
+      }
+      .d-toc {
+        font-size: .8em;
+      }
+      #post_1 .topic-body .topic-map {
+        margin: 20px -1px 20px -25px;
+      }
+      .topic-post:not(.d-toc-regular) {
+        .topic-body {
+          width: calc(667px + (11px * 2))
+        }
+        .row {
+          justify-content: left;
+        }
+      }
     }
   }
 }
