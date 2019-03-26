@@ -2,4 +2,10 @@ blog_category:
   type: string
   default: ""
   description: 
-    en: 'Enter the category slug of your blog category as it appears in the url. The slug is bold in the following example url: https://community.example.org/c/<b>blog-posts</b>'
+    en: 'Enter the category slug of your blog category as it appears in the url. 
+         The slug is bold in the following example url: 
+         https://community.example.org/c/<b>blog-posts</b>
+         <br><br>
+         Note: you may use more than one category slug by comma separating the
+         slug values like: <b>blog-one,blog-two</b> <br>
+         Be sure there are no spaces after the commas.'
