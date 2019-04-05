@@ -28,7 +28,7 @@
   $result: zip(());
 
   @if not $separator {
-    @return ($string,);
+    @return ($string);
   }
 
   @if $separator == "" {
@@ -77,11 +77,9 @@ $split-values: str-split($values, ",");
 }
 
 %blog-post {
-
   .topic-timeline {
     display: none;
   }
-
 
   #topic-title {
     display: flex;
@@ -194,11 +192,11 @@ $split-values: str-split($values, ",");
         display: block;
       }
 
-      & > p img {
+      & > p img:not(.emoji) {
         display: none;
       }
 
-      & > p ~ p img {
+      & > p ~ p img:not(.emoji) {
         display: block;
       }
 
@@ -236,6 +234,28 @@ $split-values: str-split($values, ",");
     }
   }
 
+  // Center and style other post components
+  .small-action,
+  .topic-status-info,
+  .signup-cta {
+    margin: 0 auto;
+  }
+
+  .small-action {
+    background-color: $primary-very-low;
+    margin-bottom: 10px;
+    font-size: 0.75em;
+    height: 35px;
+    .topic-avatar svg {
+      font-size: 1.5em;
+      margin-top: 2px;
+    }
+  }
+
+  .small-action .small-action-desc a.trigger-user-card {
+    align-self: unset;
+  }
+
   // CSS below taken from Simon's original Blog Post plugin
   #topic-title h1 {
     font-size: 3em;
@@ -254,7 +274,6 @@ $split-values: str-split($values, ",");
     float: left;
     padding-left: 6px;
     padding-top: 8px;
-    border-top: 1px solid $primary-low;
   }
 
   .topic-body,
@@ -337,14 +356,14 @@ $split-values: str-split($values, ",");
         display: block;
       }
       .d-toc {
-        font-size: .8em;
+        font-size: 0.8em;
       }
       #post_1 .topic-body .topic-map {
         margin: 20px -1px 20px -25px;
       }
       .topic-post:not(.d-toc-regular) {
         .topic-body {
-          width: calc(667px + (11px * 2))
+          width: calc(667px + (11px * 2));
         }
         .row {
           justify-content: left;
