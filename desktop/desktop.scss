@@ -72,11 +72,11 @@ $values: $blog_category;
 $split-values: str-split($values, ",");
 @each $value in $split-values {
   .category-#{$value} {
-    @extend %blog-post;
+    @extend %blog-category;
   }
 }
 
-%blog-post {
+%blog-category {
   .topic-timeline {
     display: none;
   }
@@ -173,9 +173,6 @@ $split-values: str-split($values, ",");
     }
 
     .cooked {
-      // paragraph margins cause too much space between divider and text
-      margin-top: -1em;
-
       big {
         font-size: 2rem;
         line-height: 2rem;
@@ -184,12 +181,11 @@ $split-values: str-split($values, ",");
         font-family: Georgia;
       }
 
-      & > .lightbox-wrapper {
+      & p:first-child + div.lightbox-wrapper {
         display: none;
-      }
-
-      & > .lightbox-wrapper ~ .lightbox-wrapper {
-        display: block;
+        & + p {
+          margin-top: -15px;
+        }
       }
 
       & > p img:not(.emoji) {
@@ -198,10 +194,6 @@ $split-values: str-split($values, ",");
 
       & > p ~ p img:not(.emoji) {
         display: block;
-      }
-
-      & > p:first-child {
-        display: none;
       }
     }
   }
