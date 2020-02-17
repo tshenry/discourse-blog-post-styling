@@ -8,7 +8,7 @@
     let allowedCategories = settings.blog_category.split(",");
     let result = false;
     $.each(allowedCategories, (_,c) => { 
-      if(currentCategory == c.trim()) {
+      if(currentCategory === c.trim()) {
         result = true;
       }
     });
@@ -83,7 +83,7 @@
           let topic = this.attrs.topic;
           let category = topic.value.category;
 
-          if(isBlogCategory(category.slug)) {
+          if(category && isBlogCategory(category.slug)) {
             renderTimeline = width > 1124 && height > 520;
           } else {
             renderTimeline = width > 924 && height > 520;
