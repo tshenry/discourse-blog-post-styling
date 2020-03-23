@@ -50,7 +50,7 @@
   // Hide timeline if viewing first post
   api.decorateWidget('topic-timeline:before', helper => {
     let topic = helper.attrs.topic;
-    if (isBlogCategory(topic.category.slug) && topic.currentPost > 1) {
+    if (topic.category && isBlogCategory(topic.category.slug) && topic.currentPost > 1) {
       $(".topic-timeline").show();
     }
   });
@@ -102,5 +102,7 @@
 </script>
 
 <script type="text/x-handlebars" data-template-name="/connectors/topic-above-post-stream/add-blog-image">
-   {{mount-widget widget="blog-image-container" args=(hash topic=model)}}
+  {{#unless model.isPrivateMessage}}
+    {{mount-widget widget="blog-image-container" args=(hash topic=model)}}
+  {{/unless}}
 </script>
