@@ -93,9 +93,13 @@ $split-values: str-split($values, ",");
     text-align: center;
     .blog-image {
       background-position: center center;
-      background-size: cover;
-      width: 100%;
+      background-repeat: no-repeat;
+      background-size: contain;
       height: 440px;
+      @if $image_display_style == "responsive crop" {
+        background-size: cover;
+        width: 100%;
+      }
     }
   }
 

@@ -9,3 +9,17 @@ blog_category:
          Note: you may use more than one category slug by comma separating the
          slug values like: <b>blog-one,blog-two</b> <br>
          Be sure there are no spaces after the commas.'
+image_display_style:
+  type: enum
+  default: "responsive crop"
+  choices:
+    - "center fit"
+  description:
+    en: 'Responsive Crop - always display at 100% width, evenly cropping the image as needed.
+         <br>
+         Center Fit - display the full image, maintaining the aspect ratio and centering it within the page.'
+mobile_enabled:
+  type: bool
+  default: false
+  description:
+    en: 'BETA VERSION - please provide feedback in the theme component topic.'
