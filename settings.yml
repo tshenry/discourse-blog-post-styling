@@ -23,3 +23,8 @@ mobile_enabled:
   default: false
   description:
     en: 'BETA VERSION - please provide feedback in the theme component topic.'
+no_images:
+  type: bool
+  default: false
+  description:
+      en: 'Enable if you want to include the styling without images at the top.'

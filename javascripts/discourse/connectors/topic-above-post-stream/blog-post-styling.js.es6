@@ -1,13 +1,14 @@
 export default {
   shouldRender(args, component) {
-    let currentCategory = args.model.category;
-    let allowedCategories = settings.blog_category.split(",");
-    let result = false;
-    $.each(allowedCategories, (_, c) => {
-      if (currentCategory && currentCategory.slug === c.trim()) {
-        result = true;
-      }
-    });
-    return result;
+    const currentCategory = args.model.category;
+
+    if(!currentCategory || settings.no_images) {
+      return false;
+    }
+
+    const allowedCategories = settings.blog_category.split(",");
+    const parentCategorySlug = currentCategory.parentCategory ? `${currentCategory.parentCategory.slug}-` : "";
+
+    return allowedCategories.some(c => c.trim() === `${parentCategorySlug}${currentCategory.slug}`);
   },
 };

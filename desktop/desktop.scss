@@ -345,6 +345,12 @@ $split-values: str-split($values, ",");
   }
 
   // Play nice with DiscoTOC theme component
+  .d-toc-toggle + p + div.lightbox-wrapper {
+    display: none;
+    & + p {
+      margin-top: -15px;
+    }
+  }
   @media screen and (min-width: $large-width) {
     .d-toc-regular {
       #topic-title {
