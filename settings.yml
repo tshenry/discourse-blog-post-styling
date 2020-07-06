@@ -13,7 +13,8 @@ image_display_style:
   type: enum
   default: "responsive crop"
   choices:
-    - "center fit"
+    - responsive crop
+    - center fit
   description:
     en: 'Responsive Crop - always display at 100% width, evenly cropping the image as needed.
          <br>

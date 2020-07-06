@@ -1,11 +1,11 @@
-import computed from "ember-addons/ember-computed-decorators";
-export default Ember.Component.extend({
+import Component from "@ember/component";
+import discourseComputed from "discourse-common/utils/decorators";
+export default Component.extend({
   imageURL: null,
-  @computed()
-  imageURL() {
-    let topic = this.args.topic;
-    if (topic.thumbnails) {
-      return topic.thumbnails[0].url;
+  @discourseComputed("topic.thumbnails")
+  imageURL(thumbnails) {
+    if(thumbnails) {
+      return thumbnails[0].url;
     }
   },
 });

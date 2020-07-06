@@ -85,7 +85,7 @@
         background-repeat: no-repeat;
         background-size: contain;
         height: 440px;
-        @if $image_display_style == "responsive crop" {
+        @if $image_display_style == 'responsive crop' {
           background-size: cover;
           width: 100%;
         }
