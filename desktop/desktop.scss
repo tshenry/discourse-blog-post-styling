@@ -103,19 +103,18 @@ $split-values: str-split($values, ",");
     }
   }
 
-  .topic-post {
-    .row {
-      display: flex;
-      justify-content: center;
+  .container.posts {
+    justify-items: end;
+    padding-left: 20px;
+    .topic-post {
+      .row {
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 
   #post_1 {
-    .row {
-      display: flex;
-      justify-content: center;
-    }
-
     .topic-avatar {
       height: 20px;
       width: 20px;
@@ -133,6 +132,10 @@ $split-values: str-split($values, ",");
         top: unset;
         bottom: -5px;
         right: -3px;
+        .d-icon {
+          height: .45em;
+          width: .45em;
+        }
       }
     }
     .topic-body {
