@@ -170,7 +170,7 @@ $split-values: str-split($values, ",");
         }
       }
       .contents {
-        border-top: 1px solid $primary-low;
+        border-top: 1px solid var(--primary-low);
         margin-left: -25px;
         padding: 15px;
       }
@@ -241,7 +241,7 @@ $split-values: str-split($values, ",");
   }
 
   .small-action {
-    background-color: $primary-very-low;
+    background-color: var(--primary-very-low);
     margin-bottom: 10px;
     font-size: 0.75em;
     height: 35px;
@@ -277,7 +277,7 @@ $split-values: str-split($values, ",");
 
   .topic-body,
   .topic-avatar {
-    background-color: $primary-very-low;
+    background-color: var(--primary-very-low);
   }
 
   .cooked {
@@ -295,12 +295,12 @@ $split-values: str-split($values, ",");
     padding-top: 4px;
 
     .topic-avatar {
-      border-top: 1px solid $primary-low;
+      border-top: 1px solid var(--primary-low);
       padding-top: 4px;
     }
 
     .topic-body {
-      background-color: $secondary;
+      background-color: var(--secondary);
       padding-top: 16px;
     }
 
@@ -325,13 +325,13 @@ $split-values: str-split($values, ",");
     }
 
     blockquote {
-      background: $primary-very-low;
-      color: $primary-high;
-      border-left: 10px solid $primary-low-mid;
+      background: var(--primary-very-low);
+      color: var(--primary-high);
+      border-left: 10px solid var(--primary-low-mid);
       padding: 0.5em 10px;
     }
     blockquote:before {
-      color: $primary-low-mid;
+      color: var(--primary-low-mid);
       content: open-quote;
       font-size: 4em;
       line-height: 0.1em;
@@ -374,6 +374,39 @@ $split-values: str-split($values, ",");
           justify-content: left;
         }
       }
+    }
+  }
+}
+
+@if $full_width == 'true' {
+  %blog-category {
+    #topic-title {
+      justify-content: left;
+    }
+    .container.posts {
+      justify-items: left;
+      padding: 0;
+      #post_1 {
+        .topic-avatar {
+          padding-left: 0;
+        }
+        .topic-body {
+          width: 100%;
+          .topic-meta-data {
+            padding-bottom: 10px;
+            .post-infos {
+              position: absolute;
+              right: 0;
+            }
+            .contents {
+              padding: 0;
+            }
+          }
+        }
+      }
+    }
+    .topic-area>.loading-container {
+      width: 100%;
     }
   }
 }

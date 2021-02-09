@@ -150,7 +150,7 @@
           }
         }
         .contents {
-          border-top: 1px solid $primary-low;
+          border-top: 1px solid var(--primary-low);
         }
       }
 
@@ -212,13 +212,13 @@
       }
 
       blockquote {
-        background: $primary-very-low;
-        color: $primary-high;
-        border-left: 10px solid $primary-low-mid;
+        background: var(--primary-very-low);
+        color: var(--primary-high);
+        border-left: 10px solid var(--primary-low-mid);
         padding: 0.5em 10px;
       }
       blockquote:before {
-        color: $primary-low-mid;
+        color: var(--primary-low-mid);
         content: open-quote;
         font-size: 4em;
         line-height: 0.1em;

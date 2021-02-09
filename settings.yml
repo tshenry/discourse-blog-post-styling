@@ -29,3 +29,8 @@ no_images:
   default: false
   description:
       en: 'Enable if you want to include the styling without images at the top.'
+full_width:
+  type: bool
+  default: false
+  description:
+    en: (EXPERIMENTAL) Display the blog post in a full-width format on desktop.

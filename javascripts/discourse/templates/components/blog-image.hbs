@@ -1,5 +1,7 @@
-{{#if imageURL}}
-<div class="blog-image-container">
-  <div class="blog-image" style="background-image: url('{{imageURL}}')"></div>
-</div>
+{{#if isBlogCategory}}
+  {{#if imageURL}}
+  <div class="blog-image-container">
+    <div class="blog-image" style="background-image: url('{{imageURL}}')"></div>
+  </div>
+  {{/if}}
 {{/if}}
