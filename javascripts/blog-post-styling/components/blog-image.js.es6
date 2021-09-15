@@ -2,20 +2,25 @@ import Category from "discourse/models/category";
 import Component from "@ember/component";
 import discourseComputed from "discourse-common/utils/decorators";
 export default Component.extend({
+  isBlogTopic: false,
   imageURL: null,
-  isBlogCategory: false,
-  @discourseComputed("topic.category_id")
-  isBlogCategory(category_id) {
-    const currentCategory = Category.findById(category_id);
-
-    if(!currentCategory || settings.no_images) {
+  @discourseComputed("topic.category_id", "topic.tags")
+  isBlogTopic(categoryId, topicTags) {
+    if(settings.no_images) {
       return false;
     }
 
-    const allowedCategories = settings.blog_category.split(",");
-    const parentCategorySlug = currentCategory.parentCategory ? `${currentCategory.parentCategory.slug}-` : "";
+    if(categoryId) {
+      const allowedCategories = settings.blog_category.split(",");
+      const currentCategory = Category.findById(categoryId);
+      const parentCategorySlug = currentCategory.parentCategory ? `${currentCategory.parentCategory.slug}-` : "";
+      return allowedCategories.some((c) => c.trim() === `${parentCategorySlug}${currentCategory.slug}`);
+    }
 
-    return allowedCategories.some(c => c.trim() === `${parentCategorySlug}${currentCategory.slug}`);
+    if(topicTags) {
+      const allowedTags = settings.blog_tag.split("|");
+      return allowedTags.some((tag) => topicTags.includes(tag));
+    }
   },
   @discourseComputed("topic.thumbnails")
   imageURL(thumbnails) {

@@ -1,5 +1,3 @@
-@import "common/foundation/variables";
-
 /// str-split function found at: https://github.com/sass-projects/stringy/blob/master/src/scss/_str-split.scss
 /// License: MIT
 
@@ -76,6 +74,15 @@ $split-values: str-split($values, ",");
   }
 }
 
+$values: $blog_tag;
+$split-values: str-split($values, "|");
+@each $value in $split-values {
+  .tag-#{$value} {
+    @extend %blog-tag;
+  }
+}
+
+%blog-tag,
 %blog-category {
   .topic-timeline {
     display: none;
@@ -84,6 +91,7 @@ $split-values: str-split($values, ",");
   #topic-title {
     display: flex;
     justify-content: center;
+    margin-top: 1em;
     .title-wrapper {
       width: calc(690px + (11px * 2));
     }
@@ -152,6 +160,7 @@ $split-values: str-split($values, ",");
         align-items: unset;
         padding: 0;
         margin-left: 6px;
+        margin-bottom: 2px;
         .names span {
           font-size: 1.15em;
         }
@@ -379,11 +388,18 @@ $split-values: str-split($values, ",");
 }
 
 @if $full_width == 'true' {
+  %blog-tag,
   %blog-category {
     #topic-title {
       justify-content: left;
+      margin-left: 0px;
+      .title-wrapper {
+        width: 95%;
+        max-width: $large-width;
+      }
     }
     .container.posts {
+      grid-template-areas: "posts";
       justify-items: left;
       padding: 0;
       #post_1 {
@@ -392,6 +408,7 @@ $split-values: str-split($values, ",");
         }
         .topic-body {
           width: 100%;
+          max-width: $large-width;
           .topic-meta-data {
             padding-bottom: 10px;
             .post-infos {

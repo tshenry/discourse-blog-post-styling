@@ -77,7 +77,19 @@
     }
   }
 
+  $values: $blog_tag;
+  $split-values: str-split($values, "|");
+  @each $value in $split-values {
+    .tag-#{$value} {
+      @extend %blog-tag;
+    }
+  }
+
+  %blog-tag,
   %blog-category {
+    #topic-title {
+      margin-top: 1em;
+    }
     .blog-image-container {
       text-align: center;
       .blog-image {
