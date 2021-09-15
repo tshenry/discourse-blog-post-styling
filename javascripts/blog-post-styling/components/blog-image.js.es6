@@ -6,6 +6,9 @@ export default Component.extend({
   imageURL: null,
   @discourseComputed("topic.category_id", "topic.tags")
   isBlogTopic(categoryId, topicTags) {
+    let hasCategory = false;
+    let hasTag = false;
+
     if(settings.no_images) {
       return false;
     }
@@ -14,13 +17,15 @@ export default Component.extend({
       const allowedCategories = settings.blog_category.split(",");
       const currentCategory = Category.findById(categoryId);
       const parentCategorySlug = currentCategory.parentCategory ? `${currentCategory.parentCategory.slug}-` : "";
-      return allowedCategories.some((c) => c.trim() === `${parentCategorySlug}${currentCategory.slug}`);
+      hasCategory = allowedCategories.some((c) => c.trim() === `${parentCategorySlug}${currentCategory.slug}`);
     }
 
     if(topicTags) {
       const allowedTags = settings.blog_tag.split("|");
-      return allowedTags.some((tag) => topicTags.includes(tag));
+      hasTag = allowedTags.some((tag) => topicTags.includes(tag));
     }
+
+    return hasCategory || hasTag;
   },
   @discourseComputed("topic.thumbnails")
   imageURL(thumbnails) {
