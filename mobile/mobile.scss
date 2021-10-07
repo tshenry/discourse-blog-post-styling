@@ -175,7 +175,7 @@
           font-family: Georgia;
         }
 
-        & p:first-child + div.lightbox-wrapper {
+        & > p:first-child + div.lightbox-wrapper {
           display: none;
           & + p {
             margin-top: -15px;
