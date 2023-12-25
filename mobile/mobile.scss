@@ -105,28 +105,7 @@
     }
     .posts-wrapper {padding-top:0;}
     #post_1 {
-      .topic-avatar {
-        border-top: none;
-        background: none;
-        margin-right: 5px;
-        img.avatar {
-          height: 25px;
-          width: 25px;
-        }
-
-        .avatar-flair {
-          background-size: 8px 8px;
-          width: 0.75em;
-          height: 0.7em;
-          top: unset;
-          bottom: -2px;
-          right: -2px;
-          svg {
-            height: 0.5em;
-          }
-        }
-      }
-      .topic-body {
+         .topic-body {
         padding-top: 0px;
 
         &.highlighted {
