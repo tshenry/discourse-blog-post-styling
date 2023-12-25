@@ -251,19 +251,6 @@ $split-values: str-split($values, "|");
     font-size: small;
   }
 
-  .topic-avatar {
-    padding-top: 0;
-    width: 45px;
-    float: left;
-    padding-left: 6px;
-    padding-top: 8px;
-  }
-
-  .topic-body,
-  .topic-avatar {
-    background-color: var(--primary-very-low);
-  }
-
   .cooked {
     padding: 0.5em 1em;
   }
