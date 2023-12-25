@@ -123,30 +123,7 @@ $split-values: str-split($values, "|");
   }
 
   #post_1 {
-    .topic-avatar {
-      height: 20px;
-      width: 20px;
-      border-top: none;
-      background: none;
-      img.avatar {
-        height: 20px;
-        width: 20px;
-      }
-
-      .avatar-flair {
-        background-size: 8px 8px;
-        width: 10px;
-        height: 10px;
-        top: unset;
-        bottom: -5px;
-        right: -3px;
-        .d-icon {
-          height: .45em;
-          width: .45em;
-        }
-      }
-    }
-    .topic-body {
+     .topic-body {
       padding-top: 8px;
       border-top: none;
 
