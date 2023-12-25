@@ -103,7 +103,7 @@
         }
       }
     }
-
+    .posts-wrapper {padding-top:0;}
     #post_1 {
       .topic-avatar {
         height: 25px;
@@ -136,10 +136,6 @@
         }
 
         .topic-meta-data {
-          display: block;
-          margin-bottom: 10px;
-          margin-left: 2px;
-          font-size: 0.75em;
           .names {
             flex-wrap: nowrap;
             .second,
@@ -195,7 +191,9 @@
     #topic-title h1 a.fancy-title {
       font-size:1em;
     }
-   
+    .topic-post article {
+      border-top: none !important;
+    }
 
     .topic-post:first-child {
       .cooked {
