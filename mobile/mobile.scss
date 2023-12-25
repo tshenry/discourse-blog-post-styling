@@ -161,9 +161,9 @@
             }
           }
         }
-        .contents {
+        /*.contents {
           border-top: 1px solid var(--primary-low);
-        }
+        }*/
       }
 
       .cooked {
@@ -192,12 +192,10 @@
       }
     }
 
-    #topic-title h1 {
+    #topic-title h1 a.fancy-title {
       font-size: 1.5em;
     }
-    #topic-title a.edit-topic .d-icon {
-      font-size: 0.5em;
-    }
+   
 
     .topic-post:first-child {
       .cooked {

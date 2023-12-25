@@ -178,11 +178,11 @@ $split-values: str-split($values, "|");
           }
         }
       }
-      .contents {
+      /*.contents {
         border-top: 1px solid var(--primary-low);
         margin-left: -25px;
         padding: 15px;
-      }
+      }*/
       .topic-map {
         margin: 20px -12px 20px -38px;
       }
@@ -265,12 +265,10 @@ $split-values: str-split($values, "|");
   }
 
   // CSS below taken from Simon's original Blog Post plugin
-  #topic-title h1 {
+  #topic-title h1 a.fancy-title {
     font-size: 3em;
   }
-  #topic-title a.edit-topic .d-icon {
-    font-size: 0.5em;
-  }
+  
 
   .topic-meta-data {
     font-size: small;
@@ -410,7 +408,7 @@ $split-values: str-split($values, "|");
           width: 100%;
           max-width: $large-width;
           .topic-meta-data {
-            padding-bottom: 10px;
+            padding-bottom:0;
             .post-infos {
               position: absolute;
               right: 0;
