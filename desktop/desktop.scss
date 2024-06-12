@@ -99,11 +99,11 @@ $split-values: str-split($values, "|");
 
   .blog-image-container {
     text-align: center;
-    .blog-image {
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: contain;
-      height: 440px;
+    .blog-image img {
+        width:100%;
+        height:100%;
+        border-radius:2em;
+        box-shadow:0 1px 2px rgba(0,0,0,.2);
       @if $image_display_style == 'responsive crop' {
         background-size: cover;
         width: 100%;
@@ -123,30 +123,7 @@ $split-values: str-split($values, "|");
   }
 
   #post_1 {
-    .topic-avatar {
-      height: 20px;
-      width: 20px;
-      border-top: none;
-      background: none;
-      img.avatar {
-        height: 20px;
-        width: 20px;
-      }
-
-      .avatar-flair {
-        background-size: 8px 8px;
-        width: 10px;
-        height: 10px;
-        top: unset;
-        bottom: -5px;
-        right: -3px;
-        .d-icon {
-          height: .45em;
-          width: .45em;
-        }
-      }
-    }
-    .topic-body {
+     .topic-body {
       padding-top: 8px;
       border-top: none;
 
@@ -178,11 +155,11 @@ $split-values: str-split($values, "|");
           }
         }
       }
-      .contents {
+      /*.contents {
         border-top: 1px solid var(--primary-low);
         margin-left: -25px;
         padding: 15px;
-      }
+      }*/
       .topic-map {
         margin: 20px -12px 20px -38px;
       }
@@ -265,28 +242,13 @@ $split-values: str-split($values, "|");
   }
 
   // CSS below taken from Simon's original Blog Post plugin
-  #topic-title h1 {
-    font-size: 3em;
+  #topic-title h1 a.fancy-title {
+    font-size: 2em;
   }
-  #topic-title a.edit-topic .d-icon {
-    font-size: 0.5em;
-  }
+  
 
   .topic-meta-data {
     font-size: small;
-  }
-
-  .topic-avatar {
-    padding-top: 0;
-    width: 45px;
-    float: left;
-    padding-left: 6px;
-    padding-top: 8px;
-  }
-
-  .topic-body,
-  .topic-avatar {
-    background-color: var(--primary-very-low);
   }
 
   .cooked {
@@ -410,7 +372,7 @@ $split-values: str-split($values, "|");
           width: 100%;
           max-width: $large-width;
           .topic-meta-data {
-            padding-bottom: 10px;
+            padding-bottom:0;
             .post-infos {
               position: absolute;
               right: 0;
