@@ -83,6 +83,10 @@ $split-values: str-split($values, "|");
   }
 }
 
+.comments-heading {
+  display: none;
+}
+
 %blog-tag,
 %blog-category {
   .topic-timeline {
@@ -106,7 +110,6 @@ $split-values: str-split($values, "|");
 
   .topic-body {
     width: 100%;
-    padding: 0;
   }
 
   .topic-avatar {
@@ -168,6 +171,7 @@ $split-values: str-split($values, "|");
     .topic-map.--op {
       padding-left: 0;
       .comments-heading {
+        display: block;
         width: 100%;
         margin-top: 1em;
       }
@@ -213,6 +217,11 @@ $split-values: str-split($values, "|");
   .small-action .small-action-desc {
     width: 100%;
     max-width: 100%;
+  }
+
+  .post-notice {
+    max-width: 519px;
+    font-size: var(--font-down-2);
   }
 
   .small-action {

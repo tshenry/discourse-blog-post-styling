@@ -34,7 +34,7 @@ export default class BlogImage extends Component {
   }
 
   get imageURL() {
-    return this.topic?.thumbnails[0]?.url;
+    return this.topic?.thumbnails?.[0]?.url;
   }
 
   <template>
