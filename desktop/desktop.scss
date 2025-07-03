@@ -16,6 +16,7 @@
 /// @return {list}
 ///
 /// @author pascalduez https://gist.github.com/pascalduez/065e560c6314c7e9d7f8
+
 @function str-split($string, $separator: null, $limit: null) {
   $string: unquote($string);
 
@@ -88,15 +89,6 @@ $split-values: str-split($values, "|");
     display: none;
   }
 
-  #topic-title {
-    display: flex;
-    justify-content: center;
-    margin-top: 1em;
-    .title-wrapper {
-      width: calc(690px + (11px * 2));
-    }
-  }
-
   .blog-image-container {
     text-align: center;
     .blog-image {
@@ -104,48 +96,47 @@ $split-values: str-split($values, "|");
       background-repeat: no-repeat;
       background-size: contain;
       height: 440px;
-      @if $image_display_style == 'responsive crop' {
+      margin-bottom: 1em;
+      @if $image_display_style == "responsive crop" {
         background-size: cover;
         width: 100%;
       }
     }
   }
 
-  .container.posts {
-    justify-items: end;
-    padding-left: 20px;
-    .topic-post {
-      .row {
-        display: flex;
-        justify-content: center;
+  .topic-body {
+    width: 100%;
+    padding: 0;
+  }
+
+  .topic-avatar {
+    height: 20px;
+    width: 20px;
+    background: none;
+    img.avatar {
+      height: 20px;
+      width: 20px;
+    }
+
+    .avatar-flair {
+      background-size: 8px 8px;
+      width: 10px;
+      height: 10px;
+      top: unset;
+      bottom: -5px;
+      right: -3px;
+      .d-icon {
+        height: 0.45em;
+        width: 0.45em;
       }
     }
   }
 
-  #post_1 {
-    .topic-avatar {
-      height: 20px;
-      width: 20px;
-      border-top: none;
-      background: none;
-      img.avatar {
-        height: 20px;
-        width: 20px;
-      }
+  .topic-map.--bottom {
+    display: none !important;
+  }
 
-      .avatar-flair {
-        background-size: 8px 8px;
-        width: 10px;
-        height: 10px;
-        top: unset;
-        bottom: -5px;
-        right: -3px;
-        .d-icon {
-          height: .45em;
-          width: .45em;
-        }
-      }
-    }
+  #post_1 {
     .topic-body {
       padding-top: 8px;
       border-top: none;
@@ -155,26 +146,16 @@ $split-values: str-split($values, "|");
       }
 
       .topic-meta-data {
-        display: flex;
         flex-direction: column;
         align-items: unset;
         padding: 0;
         margin-left: 6px;
         margin-bottom: 2px;
-        .names span {
-          font-size: 1.15em;
-        }
 
         .post-infos {
-          display: flex;
           justify-content: space-between;
           .post-info.edits {
-            float: right;
-            margin-left: 5px;
             order: 1;
-          }
-          .post-info.post-date {
-            float: left;
           }
         }
       }
@@ -183,8 +164,15 @@ $split-values: str-split($values, "|");
         margin-left: -25px;
         padding: 15px;
       }
-      .topic-map {
-        margin: 20px -12px 20px -38px;
+    }
+    .topic-map.--op {
+      padding-left: 0;
+      .comments-heading {
+        width: 100%;
+        margin-top: 1em;
+      }
+      .topic-map__users-list {
+        display: none;
       }
     }
 
@@ -214,54 +202,32 @@ $split-values: str-split($values, "|");
     }
   }
 
-  @media all and (max-width: 775px) {
-    #topic-title {
-      margin-left: 24px;
-      justify-content: left;
-    }
-
-    #topic-title .title-wrapper {
-      box-sizing: border-box;
-      width: calc(100% - 47px);
-    }
+  .post-infos img.avatar {
+    height: 20px;
+    width: 20px;
   }
 
-  @media all and (min-width: 950px) {
-    .timeline-container {
-      margin-left: 950px;
-    }
-  }
-
-  // Adjust reply flair position
-  .topic-avatar .avatar-flair {
-    bottom: unset;
-    top: 34px;
-
-    &.rounded {
-      top: 30px;
-    }
-  }
-
-  // Center and style other post components
-  .small-action,
   .topic-status-info,
-  .signup-cta {
-    margin: 0 auto;
+  .topic-timer-info,
+  .topic-area > .loading-container,
+  .small-action .small-action-desc {
+    width: 100%;
+    max-width: 100%;
   }
 
   .small-action {
-    background-color: var(--primary-very-low);
-    margin-bottom: 10px;
     font-size: 0.75em;
-    height: 35px;
-    .topic-avatar svg {
-      font-size: 1.5em;
-      margin-top: 2px;
+    .small-action-desc {
+      max-width: 500px;
+      .small-action-contents {
+        display: flex;
+        align-items: center;
+        .avatar {
+          height: 15px;
+          width: 15px;
+        }
+      }
     }
-  }
-
-  .small-action .small-action-desc a.trigger-user-card {
-    align-self: unset;
   }
 
   // CSS below taken from Simon's original Blog Post plugin
@@ -276,154 +242,126 @@ $split-values: str-split($values, "|");
     font-size: small;
   }
 
-  .topic-avatar {
-    padding-top: 0;
-    width: 45px;
-    float: left;
-    padding-left: 6px;
-    padding-top: 8px;
-  }
-
-  .topic-body,
-  .topic-avatar {
-    background-color: var(--primary-very-low);
-  }
-
   .cooked {
     padding: 0.5em 1em;
   }
 
   .topic-post {
-    padding-bottom: 8px;
-  }
-
-  .topic-post:first-child {
-    font-size: 1.25em;
-    line-height: 1.4;
-    padding-bottom: 0;
-    padding-top: 4px;
-
-    .topic-avatar {
-      border-top: 1px solid var(--primary-low);
-      padding-top: 4px;
-    }
-
     .topic-body {
-      background-color: var(--secondary);
-      padding-top: 16px;
+      max-width: 500px;
     }
+    &:first-child {
+      font-size: 1.25em;
+      line-height: 1.4;
+      padding-bottom: 0;
+      padding-top: 4px;
 
-    .cooked {
-      padding: 0;
-    }
-
-    nav.post-controls .actions,
-    .topic-map,
-    .post-admin-menu {
-      font-size: 14px;
-    }
-
-    figure {
-      margin: 0;
-    }
-
-    figcaption {
-      margin-top: -16px;
-      font-size: 0.8em;
-      font-weight: bold;
-    }
-
-    blockquote {
-      background: var(--primary-very-low);
-      color: var(--primary-high);
-      border-left: 10px solid var(--primary-low-mid);
-      padding: 0.5em 10px;
-    }
-    blockquote:before {
-      color: var(--primary-low-mid);
-      content: open-quote;
-      font-size: 4em;
-      line-height: 0.1em;
-      vertical-align: -0.4em;
-    }
-    blockquote p {
-      display: inline;
-    }
-  }
-
-  // Hide the timeline when first entering the topic.
-  .timeline-container.timeline-docked {
-    display: none;
-  }
-
-  // Play nice with DiscoTOC theme component
-  .d-toc-toggle + p + div.lightbox-wrapper {
-    display: none;
-    & + p {
-      margin-top: -15px;
-    }
-  }
-  @media screen and (min-width: $large-width) {
-    .d-toc-regular {
-      #topic-title {
-        margin-left: 10px;
-        display: block;
+      .topic-avatar {
+        padding-top: 4px;
+        position: static !important;
+        border-top: none;
       }
-      .d-toc {
+
+      .topic-body {
+        max-width: unset;
+      }
+
+      .cooked {
+        padding: 0;
+      }
+
+      nav.post-controls .actions,
+      .topic-map,
+      .post-admin-menu {
+        font-size: 14px;
+      }
+
+      figure {
+        margin: 0;
+      }
+
+      figcaption {
+        margin-top: -16px;
         font-size: 0.8em;
+        font-weight: bold;
       }
-      #post_1 .topic-body .topic-map {
-        margin: 20px -1px 20px -25px;
+
+      blockquote {
+        background: var(--primary-very-low);
+        color: var(--primary-high);
+        border-left: 10px solid var(--primary-low-mid);
+        padding: 0.5em 10px;
       }
-      .topic-post:not(.d-toc-regular) {
-        .topic-body {
-          width: calc(667px + (11px * 2));
-        }
-        .row {
-          justify-content: left;
-        }
+      blockquote:before {
+        color: var(--primary-low-mid);
+        content: open-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        vertical-align: -0.4em;
+      }
+      blockquote p {
+        display: inline;
       }
     }
   }
-}
 
-@if $full_width == 'true' {
-  %blog-tag,
-  %blog-category {
+  // Hide the timeline / progress in certain cases
+  .timeline-toggle,
+  #topic-progress-wrapper.docked,
+  .timeline-container.timeline-docked {
+    display: none !important;
+  }
+
+  .container.posts {
+    justify-content: center;
+    grid-template-columns: 65% 5%;
+    &.row {
+      width: 750px;
+    }
+    .topic-navigation {
+      .d-toc-main {
+        min-width: 11.25em;
+      }
+    }
+  }
+  #topic-title {
+    display: flex;
+    justify-content: center;
+    .title-wrapper {
+      width: 70%;
+      .topic-category {
+        margin-top: 0.25em;
+      }
+    }
+  }
+  .topic-area > .loading-container {
+    max-width: 500px;
+  }
+
+  @media screen and (max-width: 1350px) {
+    .container.posts {
+      justify-content: center;
+      grid-template-columns: 65% 15%;
+      & > .row {
+        width: unset;
+      }
+      .topic-navigation {
+        margin-left: 1em;
+      }
+    }
+    #topic-title {
+      .title-wrapper {
+        width: 80%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 924px) {
+    .container.posts {
+      grid-template-columns: 100%;
+    }
     #topic-title {
       justify-content: left;
-      margin-left: 0px;
-      .title-wrapper {
-        width: 95%;
-        max-width: $large-width;
-      }
-    }
-    .container.posts {
-      grid-template-areas: "posts";
-      justify-items: left;
-      padding: 0;
-      #post_1 {
-        .topic-avatar {
-          padding-left: 0;
-        }
-        .topic-body {
-          width: 100%;
-          max-width: $large-width;
-          .topic-meta-data {
-            padding-bottom: 10px;
-            .post-infos {
-              position: absolute;
-              right: 0;
-            }
-            .contents {
-              padding: 0;
-            }
-          }
-        }
-      }
-    }
-    .topic-area>.loading-container {
-      width: 100%;
     }
   }
 }
